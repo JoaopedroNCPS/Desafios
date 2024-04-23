@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Despesas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: rgb(233, 222, 222);
+    }
+    #container {
+      width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="number"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<header>
+    <div id="rodape" align="center">
+        <div align="center">
+            <h1/>
+            <img src="https://i.pinimg.com/564x/7b/6a/cb/7b6acb6d7624bcc086871d2894c11b3e.jpg" height="500" width="1350"/> 
+        </div>
+    </div>
+    </header>    
+<body>
+  <div id="container">
+    <h2>Calculadora de Despesas</h2>
+    <label for="aluguel">Aluguel:</label>
+    <input type="number" id="aluguel" placeholder="Digite o valor do aluguel">
+
+    <label for="agua">Água:</label>
+    <input type="number" id="agua" placeholder="Digite o valor da água">
+
+    <label for="energia">Energia Elétrica:</label>
+    <input type="number" id="energia" placeholder="Digite o valor da energia elétrica">
+
+    <label for="folha">Folha de Pagamento:</label>
+    <input type="number" id="folha" placeholder="Digite o valor da folha de pagamento">
+
+    <label for="impostos">Impostos:</label>
+    <input type="number" id="impostos" placeholder="Digite o valor dos impostos">
+
+    <button onclick="calcularGastos()">Calcular</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularGastos() {
+      var aluguel = parseFloat(document.getElementById('aluguel').value) || 0;
+      var agua = parseFloat(document.getElementById('agua').value) || 0;
+      var energia = parseFloat(document.getElementById('energia').value) || 0;
+      var folha = parseFloat(document.getElementById('folha').value) || 0;
+      var impostos = parseFloat(document.getElementById('impostos').value) || 0;
+
+      var total = aluguel + agua + energia + folha + impostos;
+      var media = total / 5;
+      var estimativaAnual = total * 12;
+
+      document.getElementById('resultado').innerHTML = `
+        <h3>Total de Gastos Mensais:</h3>
+        <p>Total: R$ ${total.toFixed(2)}</p>
+        <p>Média: R$ ${media.toFixed(2)}</p>
+        <h3>Estimativa de Gastos Anuais:</h3>
+        <p>R$ ${estimativaAnual.toFixed(2)}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
